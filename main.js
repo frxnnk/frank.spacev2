@@ -64,7 +64,7 @@ Array(2000).fill().forEach(addStar);
 
 // Avatar
 
-const franTexture = new THREE.TextureLoader().load('./fran.png');
+const franTexture = new THREE.TextureLoader().load('../fran.png');
 
 const fran = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: franTexture }));
 
