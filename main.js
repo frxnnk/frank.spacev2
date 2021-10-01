@@ -1,12 +1,13 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { randFloat } from 'three/src/math/MathUtils';
 
 // Setup
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(125, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
@@ -44,10 +45,13 @@ scene.add(pointLight, ambientLight);
 // scene.add(lightHelper, gridHelper)
 
 // const controls = new OrbitControls(camera, renderer.domElement);
-
+function randomColor(){
+  let color = [0x50c878, 0x7850c8, 0xc850a0, 0xc87850, 0xc85064, 0xffffff]
+  return color[Math.floor(Math.random()*color.length)];
+}
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 20, 20);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff});
+  const geometry = new THREE.SphereGeometry(randFloat(0.01,0.25), 20, 20);
+  const material = new THREE.MeshStandardMaterial({ color: randomColor()});
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
@@ -64,7 +68,7 @@ Array(2000).fill().forEach(addStar);
 
 // Avatar
 
-const franTexture = new THREE.TextureLoader().load('../fran.png');
+const franTexture = new THREE.TextureLoader().load('../../fran.png');
 
 const fran = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: franTexture }));
 
@@ -105,7 +109,7 @@ scene.add(moon);
 scene.add(mars);
 scene.add(ford);
 
-fran.position.z = -5;
+fran.position.z = -10;
 fran.position.setX(0);
 
 ford.position.z = -1;
