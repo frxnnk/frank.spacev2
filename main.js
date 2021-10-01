@@ -68,7 +68,7 @@ Array(2000).fill().forEach(addStar);
 
 // Avatar
 function getImageUrl(name) {
-  return new URL(`./images/${name}.png`, import.meta.url).href
+  return new URL(`./${name}.png`, import.meta.url).href
 }
 
 const franTexture = new THREE.TextureLoader().load(getImageUrl("fran"));
