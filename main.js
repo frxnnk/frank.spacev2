@@ -50,7 +50,7 @@ function randomColor(){
   return color[Math.floor(Math.random()*color.length)];
 }
 function addStar() {
-  const geometry = new THREE.SphereGeometry(randFloat(0.01,0.25), 20, 20);
+  const geometry = new THREE.SphereGeometry(randFloat(0.01,0.18), 20, 20);
   const material = new THREE.MeshStandardMaterial({ color: randomColor()});
   const star = new THREE.Mesh(geometry, material);
 
@@ -67,8 +67,11 @@ Array(2000).fill().forEach(addStar);
 // Background
 
 // Avatar
+function getImageUrl(name) {
+  return new URL(`./images/${name}.png`, import.meta.url).href
+}
 
-const franTexture = new THREE.TextureLoader().load('../../fran.png');
+const franTexture = new THREE.TextureLoader().load(getImageUrl("fran"));
 
 const fran = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: franTexture }));
 
@@ -188,7 +191,7 @@ render(1);
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.01;
+  torus.rotation.x += 0.005;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
 
@@ -196,7 +199,7 @@ function animate() {
   ford.rotation.x += 0.005;
   mars.rotation.x += 0.005;
 
-  fran.rotation.x += 0.02;
+  fran.rotation.x += 0.001;
   // controls.update();
 
   renderer.render(scene, camera);
