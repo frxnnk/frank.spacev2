@@ -21,15 +21,6 @@ camera.position.setX(-3);
 renderer.render(scene, camera);
 
 
-// Torus
-
-const geometry = new THREE.TorusGeometry(20, 1, 5, 60);
-const material = new THREE.MeshStandardMaterial({ color: 0x66cc66 });
-const torus = new THREE.Mesh(geometry, material);
-torus.position.setX(0);
-
-scene.add(torus);
-
 // Lights
 
 const pointLight = new THREE.PointLight(0xffffff);
@@ -45,6 +36,10 @@ scene.add(pointLight, ambientLight);
 // scene.add(lightHelper, gridHelper)
 
 // const controls = new OrbitControls(camera, renderer.domElement);
+
+
+// Background
+
 function randomColor(){
   let color = [0x50c878, 0x7850c8, 0xc850a0, 0xc87850, 0xc85064, 0xffffff]
   return color[Math.floor(Math.random()*color.length)];
@@ -64,14 +59,19 @@ function addStar() {
 
 Array(2000).fill().forEach(addStar);
 
-// Background
+// Torus
+
+const geometry = new THREE.TorusGeometry(20, 1, 5, 60);
+const material = new THREE.MeshStandardMaterial({ color: 0x66cc66 });
+const torus = new THREE.Mesh(geometry, material);
+torus.position.setX(0);
+
+scene.add(torus);
+
 
 // Avatar
-function getImageUrl(name) {
-  return new URL(`./${name}.png`, import.meta.url).href
-}
 
-const franTexture = new THREE.TextureLoader().load(getImageUrl("fran"));
+const franTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/smeraldgreen/frank.spacev2/master/fran.png');
 
 const fran = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: franTexture }));
 
