@@ -112,7 +112,8 @@ scene.add(moon);
 scene.add(mars);
 scene.add(ford);
 
-fran.position.z = -10;
+fran.position.z = -6;
+fran.position.setY(-2);
 fran.position.setX(0);
 
 ford.position.z = -1;
