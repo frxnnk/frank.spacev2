@@ -184,7 +184,7 @@ function render(time) {
 }
 
 
-render(1);
+render(0.001);
 
 
 
