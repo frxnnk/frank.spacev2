@@ -39,6 +39,37 @@ scene.add(pointLight, ambientLight);
 
 
 // Background
+// Animation Loop
+function render(time) {
+  time *= 0.001;
+ 
+  const canvas = renderer.domElement;
+  camera.aspect = canvas.clientWidth / canvas.clientHeight;
+  camera.updateProjectionMatrix();
+
+  function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const pixelRatio = window.devicePixelRatio;
+    const width  = canvas.clientWidth  * pixelRatio | 0;
+    const height = canvas.clientHeight * pixelRatio | 0;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+      renderer.setSize(width, height, false);
+    }
+    return needResize;
+  }
+
+  if (resizeRendererToDisplaySize(renderer)) {
+    const canvas = renderer.domElement;
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+  }
+ 
+}
+
+
+render(0.001);
+
 
 function randomColor(){
   let color = [0x50c878, 0x7850c8, 0xc850a0, 0xc87850, 0xc85064, 0xffffff]
@@ -153,38 +184,6 @@ function moveCamera() {
 document.body.onscroll = moveCamera;
 moveCamera();
 
-
-
-// Animation Loop
-function render(time) {
-  time *= 0.001;
- 
-  const canvas = renderer.domElement;
-  camera.aspect = canvas.clientWidth / canvas.clientHeight;
-  camera.updateProjectionMatrix();
-
-  function resizeRendererToDisplaySize(renderer) {
-    const canvas = renderer.domElement;
-    const pixelRatio = window.devicePixelRatio;
-    const width  = canvas.clientWidth  * pixelRatio | 0;
-    const height = canvas.clientHeight * pixelRatio | 0;
-    const needResize = canvas.width !== width || canvas.height !== height;
-    if (needResize) {
-      renderer.setSize(width, height, false);
-    }
-    return needResize;
-  }
-
-  if (resizeRendererToDisplaySize(renderer)) {
-    const canvas = renderer.domElement;
-    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-    camera.updateProjectionMatrix();
-  }
- 
-}
-
-
-render(0.001);
 
 
 
