@@ -79,9 +79,9 @@ scene.add(fran);
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const marsTexture = new THREE.TextureLoader().load('mars.jpg');
-const fordTexture = new THREE.TextureLoader().load('ford.jpg');
+const moonTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/smeraldgreen/frank.spacev2/master/moon.jpg');
+const marsTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/smeraldgreen/frank.spacev2/master/mars.jpg');
+const fordTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/smeraldgreen/frank.spacev2/master/ford.jpg');
 const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
 const moon = new THREE.Mesh(
