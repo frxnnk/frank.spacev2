@@ -40,36 +40,33 @@ scene.add(pointLight, ambientLight);
 
 // Background
 // Animation Loop
-function render(time) {
-  time *= 0.001;
- 
+function render() {
+  if (resize(renderer)) {
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+  }
+  renderer.render(scene, camera);
+  requestAnimationFrame(render);
+}
+
+function resize(renderer) {
   const canvas = renderer.domElement;
-  camera.aspect = canvas.clientWidth / canvas.clientHeight;
-  camera.updateProjectionMatrix();
-
-  function resizeRendererToDisplaySize(renderer) {
-    const canvas = renderer.domElement;
-    const pixelRatio = window.devicePixelRatio;
-    const width  = canvas.clientWidth  * pixelRatio | 0;
-    const height = canvas.clientHeight * pixelRatio | 0;
-    const needResize = canvas.width !== width || canvas.height !== height;
-    if (needResize) {
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  const needResize = canvas.width !== width || canvas.height !== height;
+  if (needResize) {
       renderer.setSize(width, height, false);
-    }
-    return needResize;
   }
-
-  if (resizeRendererToDisplaySize(renderer)) {
-    const canvas = renderer.domElement;
-    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-    camera.updateProjectionMatrix();
-  }
- 
+  return needResize;
 }
 
 
-render(0.001);
+window.addEventListener( 'resize', function() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
 
+  renderer.setSize( window.innerWidth, window.innerHeight )
+})
 
 function randomColor(){
   let color = [0x50c878, 0x7850c8, 0xc850a0, 0xc87850, 0xc85064, 0xffffff]
