@@ -6,6 +6,7 @@ html, body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+
 canvas {
   position: fixed;
   top: 0;
@@ -20,13 +21,12 @@ canvas {
 
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
-  --spacing: 350px;
+  --spacing: 100px;
 
   font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
 
 main {
   width: 100vw;
@@ -42,7 +42,7 @@ main {
 }
 
 h1, h2, h3, blockquote {
-  font-family: elevon, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
@@ -67,63 +67,58 @@ canvas {
   	opacity: 1;
 }
 
-  header {
-    top:0;
-    grid-column: 2 / 12;
-    font-size: 2rem;
-    margin-bottom: var(--spacing);
-    text-shadow: 1px 1px black;
-    color: #66cc66;
-    text-align: center;
-  }
+header {
+  top:0;
+  grid-column: 2 / 12;
+  font-size: 2rem;
+  margin-bottom: var(--spacing);
+  text-shadow: 1px 1px black;
+  color: #66cc66;
+  text-align: center;
+}
 
-  section {
-    grid-column: 2 / 12;
-    padding: 1rem;
-    background: var(--dark-bg);
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin-bottom: var(--spacing);
-    text-align: center;
+section {
+  grid-column: 2 / 12;
+  padding: 1rem;
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  text-align: center;
 
-  }
+}
 
-  blockquote {
-    grid-column: 2 / 12;
-    font-size: 2rem;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 200px;
-  }
+blockquote {
+  grid-column: 2 / 12;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-bottom:50px;
+}
 
-  blockquote p {
-    color: #66cc66;
-    background-color: black;
-    font-size: 1.5rem;
-    display: inline;
-    line-height: 1;
-  }
+blockquote p {
+  color: #66cc66;
+  background-color: black;
+  font-size: 1.5rem;
+  display: inline;
+  line-height: 1;
+}
 
-  .left {
-    grid-column: 6 / 12;
-  }
-
+.left {
+  grid-column: 6 / 12;
+}
   /*Use this class when you want your content to be hidden*/
 .BeforeScroll
 {
   height: 100px; /*Whatever you want*/
   width: 100%; /*Whatever you want*/
-  
   display: none;
 }
-
-
 /*Use this class when you want your content to be shown after some scroll*/
 .AfterScroll
 {
   height: 100px; /*Whatever you want*/
   width: 100%; /*Whatever you want*/
-  
   display: block;
 }
